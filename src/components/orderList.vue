@@ -50,27 +50,8 @@
   export default {
     data() {
       return {
-        tableData: [{
-          num: '00001113',
-          name: '商品1',
-          storage: '上海市普陀区金沙江路 1518 弄',
-          sendtime:'2019-12-20',
-        }, {
-          num: '00001113',
-          name: '商品2',
-          storage: '上海市普陀区金沙江路 1518 弄',
-          sendtime:'2019-12-20'
-        }, {
-          num: '00001113',
-          name: '商品3',
-          storage: '上海市普陀区金沙江路 1518 弄',
-          sendtime:'2019-12-20'
-        }, {
-          num: '00001113',
-          name: '商品4',
-          storage: '上海市普陀区金沙江路 1518 弄',
-          sendtime:'2019-12-20'
-        }],
+        tableData: [
+          ],
 		activities: [{
 				content: '发货',
 				timestamp: '2018-04-12 20:46',
@@ -107,7 +88,7 @@
 		});
     },
 		info(row){
-			axios.get('http://localhost:8085/info',{params:{num:row.num}})
+			axios.post('http://localhost:8085/info',{num:row.num})
 			.then( (response) => {
 				window.console.log(response);
 				this.activities=response.data;

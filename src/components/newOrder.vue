@@ -79,18 +79,27 @@
           quantity:'',
           
           desc: ''
-        }
+        },
+		result:false,
       }
     },
     methods: {
       onSubmit() {
         axios.post('http://localhost:8085/newOrder', this.form)
-          .then(function (response) {
-            window.console.log(response);
+          .then((response)=> {
+            this.result=response.data;
+			if(this.result)
+				this.$message({
+				message: '提交成功',
+				type: 'success'
+				});
+			else this.$message.error({message: '提交失败'});
           })
           .catch(function (error) {
             window.console.log(error);
           });
+		
+		
       }
     }
   }

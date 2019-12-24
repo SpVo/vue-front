@@ -9,6 +9,7 @@
 			:value="item.value">
 		</el-option>
 		</el-select>
+		<el-button type="primary" @click="getData">确认</el-button>
 	<el-table
    :data="tableData"
   stripe
@@ -53,35 +54,15 @@
 				value: 'storage3',
 				label: '仓库3'
 			}, ],
-				value: ''
+				value: '',
+				tableData: []
 			}
 		},
-		tableData: [{
-		num: '00001113',
-		name: '商品1',
-		type: '电子产品',
-		quantity:'50'
-		}, {
-		num: '00001113',
-		name: '商品2',
-		type: '书籍',
-		quantity:'50'
-		}, {
-		num: '00001113',
-		name: '商品3',
-		type: '电子产品',
-		quantity:'50'
-		}, {
-		num: '00001113',
-		name: '商品4',
-		type: '服装',
-		quantity:'50'
-		}],
 		
 		
 		methods:{
 			getData() {
-			axios.get('http://localhost:8085/orderlist',{params:{storage:this.value}})
+			axios.post('http://localhost:8085/storagelist',{storage:this.value})
 			.then( (response) => {
 				window.console.log(response);
 				this.tableData=response.data;

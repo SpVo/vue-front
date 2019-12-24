@@ -97,10 +97,7 @@
           desc: '',
         },
 		tableData: [{
-			num: '00001113',
-			name: '商品1',
-			storage: '上海市普陀区金沙江路 1518 弄',
-			sendtime:'2019-12-20'
+			
 		}]
       }
     },
@@ -108,7 +105,7 @@
       onSubmit() {
 		
         axios.post('http://localhost:8085/searchOrder', this.form)
-          .then(function (response) {
+          .then((response)  =>{
            window.console.log(response);
            this.tableData=response.data;
           })
